@@ -2,7 +2,31 @@
 
 A modern, production-ready template for building full-stack React applications using React Router.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+
+
+## Live Demo
+To open the live demo please use this link 
+https://stackblitz.com/github/Narendhraprasth/ExchangeRateCalculator
+
+And after that 
+```bash
+cd frontend
+npm install 
+```
+Thus that command will install all the dependencies .
+
+Then please get a trial api plan from https://www.exchangerate-api.com/ then create 2 env variables
+
+VITE_API_URL=https://v6.exchangerate-api.com/v6
+VITE_API_KEY=YOUR-API-KEY
+
+Then
+```bash
+npm run dev
+``` 
+to see the live demo! 
+
+
 
 ## Features
 
@@ -33,6 +57,8 @@ npm run dev
 ```
 
 Your application will be available at `http://localhost:5173`.
+
+
 
 ## Building for Production
 
