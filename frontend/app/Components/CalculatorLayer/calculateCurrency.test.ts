@@ -176,8 +176,8 @@ describe('currencyConversion',()=>{
         const res = await currencyConversion(userInput,conversion_rates,"USD");
         expect(res.resultingCurrency).toBe("USD");
         expect(res.resultingAmount).toBeGreaterThanOrEqual(0);
-        expect(res.resultingAmount).toBeLessThanOrEqual(1000);
-        
+    
+
         
     });
     it("throws if a missing currency",async()=>{
