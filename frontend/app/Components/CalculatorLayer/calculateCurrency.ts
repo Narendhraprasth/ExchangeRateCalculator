@@ -14,8 +14,11 @@ const calculateCurrency = (tokens: TokenInterface[], rates: ExchangeRates): numb
 
     const usdValue: number = t.amount / rate;
     total += t.sign * usdValue;
+
+    
   }
-  return Number(total);
+  total = Math.abs(total)
+  return Number(total.toFixed(2));
 };
 
 export default calculateCurrency;
