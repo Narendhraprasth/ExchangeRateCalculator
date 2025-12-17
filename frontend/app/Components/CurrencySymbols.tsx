@@ -8,37 +8,33 @@ import {
   Button,
 } from "@mui/material";
 import ApiUrl from "./CurrencyApi";
-import parseExpression from "./MatchRegex";
+import type { ExchangeRates } from "./CalculatorLayer/types";
+import { currencyConversion } from "./CalculatorLayer/currencyConversion";
 
 function CurrencySymbols() {
-  const [result, setResult] = useState(null);
-  const [value, setValue] = useState("");
+  const [result, setResult] = useState<ExchangeRates | null>(null);
+  const [value, setValue] = useState<string>("");
+  const [output, setOutput] = useState<{
+    resultingAmount: number;
+    resultingCurrency: string;
+  } | null>(null);
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
 
   const GetCurrencyApi = async () => {
     try {
       const response = await ApiUrl.get(`/latest/USD`);
-      setResult(response.data.conversion_rates);
+      const exchangeRates = response.data.conversion_rates as ExchangeRates;
+      setResult(exchangeRates);
+
+      const res = await currencyConversion(value, exchangeRates, "USD");
+      setOutput(res);
     } catch (err) {
       console.error(err);
+      setOutput(null);
     }
-  };
-  const CalculateCurrencies = ({expr, rates}) => {
-    const tokens = parseExpression(expr);
-    let total = 0;
-
-    for (const t of tokens) {
-      const usdValue = t.amount / rates[t.currency];
-      total += t.sign * usdValue;
-    }
-    return(
-        <Box>
-            <Typography>{parseFloat(total).toFixed(2)} USD</Typography>
-        </Box>
-    )
   };
 
   return (
@@ -64,14 +60,20 @@ function CurrencySymbols() {
             gap: 1,
           }}
         >
-          <TextField label="Enter Values" onChange={handleChange} />
+          <TextField
+            label="Enter Values"
+            value={value}
+            onChange={handleChange}
+          />
           <Button variant="contained" onClick={GetCurrencyApi}>
             Click
           </Button>
         </Box>
         <Box>
-          {result && (
-            <CalculateCurrencies expr={value} rates={result} />
+          {output && (
+            <Typography variant="h6">
+              {output.resultingAmount.toFixed(2)} {output.resultingCurrency}
+            </Typography>
           )}
         </Box>
       </Box>

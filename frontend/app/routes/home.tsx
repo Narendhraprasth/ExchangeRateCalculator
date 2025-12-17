@@ -1,8 +1,7 @@
 // import { Welcome } from "../welcome/welcome";
 import { AppBar, Box } from "@mui/material";
-import HomePage from "../Components/HomePage";
-import CurrencySymbols from "../Components/CurrencySymbols";
-import NavBar from "../Components/NavBar";
+import CurrencySymbols from '../Components/CurrencySymbols'
+import NavBar from "../Components/NavBar"
 
 export function meta() {
   return [
