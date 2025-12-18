@@ -16,10 +16,10 @@ npm install
 Thus that command will install all the dependencies .
 
 Then please get a trial api plan from https://www.exchangerate-api.com/ then create 2 env variables
-
+```env
 VITE_API_URL=https://v6.exchangerate-api.com/v6
 VITE_API_KEY=YOUR-API-KEY
-
+```
 Then
 ```bash
 npm run dev
