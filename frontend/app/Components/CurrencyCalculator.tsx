@@ -8,10 +8,10 @@ import {
   Button,
 } from "@mui/material";
 import ApiUrl from "./CurrencyApi";
-import type { ExchangeRates } from "./CalculatorLayer/types";
-import { currencyConversion } from "./CalculatorLayer/currencyConversion";
+import type { ExchangeRates } from "../src/CalculatorLayer/types";
+import { currencyConversion } from "../src/CalculatorLayer/currencyConversion";
 
-function CurrencySymbols() {
+function CurrencyCalculator() {
   const [result, setResult] = useState<ExchangeRates | null>(null);
   const [value, setValue] = useState<string>("");
   const [output, setOutput] = useState<{
@@ -81,4 +81,4 @@ function CurrencySymbols() {
   );
 }
 
-export default CurrencySymbols;
+export default CurrencyCalculator;

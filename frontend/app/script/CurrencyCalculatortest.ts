@@ -1,4 +1,4 @@
-import { currencyConversion } from "~/Components/CalculatorLayer/currencyConversion"
+import { currencyConversion } from "~/src/CalculatorLayer/currencyConversion"
 
 const conversion_rates={    
     "USD":1,

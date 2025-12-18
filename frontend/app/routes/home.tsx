@@ -1,6 +1,6 @@
 // import { Welcome } from "../welcome/welcome";
 import { AppBar, Box } from "@mui/material";
-import CurrencySymbols from '../Components/CurrencySymbols'
+import CurrencyCalculator from '../Components/CurrencyCalculator'
 import NavBar from "../Components/NavBar"
 
 export function meta() {
@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <Box  sx={{height:'100vh',display:'flex',flexDirection:'column',justifyContent:'start',alignItems:'center'}}>
       <NavBar />
-      <CurrencySymbols />
+      <CurrencyCalculator />
     </Box>
   );
 }
